@@ -1,6 +1,6 @@
 <template>
     <div class="iadmin_codetable g_wrap">
-        <el-button @click="showModal = true" type="primary">批量生成</el-button>
+        <el-button @click="showModal = true" type="primary">Invitaion Code Generator</el-button>
         <t-c-r
           :tableData="codeList"
           :tableCols="tableCols"
@@ -10,7 +10,7 @@
         </t-c-r>
         <el-dialog
           :visible.sync="showModal"
-          title="批量生成邀请码"
+          title="Invitaion Code Generator Bulk"
           width="360">
           <modal-form @closeModal="showModal = false"></modal-form>
         </el-dialog>
@@ -29,34 +29,34 @@ export default {
       return [
         {
           raw: {
-            label: '邀请码',
+            label: 'Invite Code',
             prop: 'InviteCode',
           },
         },
         {
           raw: {
-            label: '创建时间',
+            label: 'Created',
             prop: 'Created',
           },
           formatter: (v) => this.dateFilter(v),
         },
         {
           raw: {
-            label: '有效期限',
+            label: 'Limit',
             prop: 'AvailableLimit',
           },
-          formatter: (v) => `${v}个月`,
+          formatter: (v) => `${v}Month`,
         },
         {
           raw: {
-            label: '总流量',
+            label: 'Total Usage',
             prop: 'PackageLimit',
           },
           formatter: (v) => `${v} GB`,
         },
         {
           raw: {
-            label: '操作',
+            label: 'Operatinh',
           },
           render: {
             props: {
@@ -112,10 +112,10 @@ export default {
     },
     remove(item, index) {
       // TODO: FIX remove effect page
-      this.$confirm('是否确定删除邀请码?', '提示', {
-        title: '删除邀请码',
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('Are you sure to delete the invitation code?', 'Prompt', {
+        title: 'Delete invitation code',
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning',
       })
         .then(() => {
@@ -127,16 +127,16 @@ export default {
                 const index = this.codeList.findIndex((e) => e.Id === removeId)
                 if (index > -1) {
                   this.codeList.splice(index, 1)
-                  this.$message.success('邀请码已删除')
+                  this.$message.success('Invitation code has been deleted')
                   this.removePaginationCheck()
                   this.fetchCode(this.pagination.index)
                 }
               } else {
-                this.$message.error('删除邀请码失败!')
+                this.$message.error('Deleting invitation code failed!')
               }
             })
             .catch(() => {
-              this.$message.error('删除邀请码失败!')
+              this.$message.error('Deleting invitation code failed!')
             })
         })
         .catch(() => {})
