@@ -12,7 +12,7 @@
                     </a>
                 </div>
             </div>
-            <p class="time">基于docker的多用户SS管理平台.</p>
+            <p class="time">SSR Manager</p>
         </div>
         </el-card>
     </div>
