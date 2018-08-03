@@ -10,7 +10,7 @@
         v-if="showIndex"
         type="index"
         class-name="g_table_index"
-        label="序号"
+        label="Serial number"
         width="100">
       </el-table-column>
       <el-table-column
